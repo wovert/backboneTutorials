@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todos</title>
+  <link rel="stylesheet" href="./assets/base.css">
+</head>
+<body>
+  <div id="todoapp">
+    
+    <header id="header">
+      <h1>Todos</h1>
+      <input type="text" name="new-todo" id="new-todo" placeholder="What do you want?" autofocus>
+    </header>
+    
+    <section id="main">
+      <input type="checkbox" name="toggle-all" id="toggle-all">
+      <label for="toggle-all">标记全部为完成</label>
+      <ul id="todo-list">
+
+      </ul>
+    </section>
+
+    <footer id="footer">
+
+    </footer>
+  </div>
+
+  <div id="info">
+    <p>You can double click edit task</p>
+  </div>
+
+  <!-- 定义任务模版 -->
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input type="checkbox" class="toggle" <%= completed ? 'checked' : '' %>>
+      <label><%= title %></label>
+      <button class="destroy"></button>
+    </div>
+    <input type="text" class="edit" value="<%= title %>">
+  </script>
+
+  <script type="text/template" id="stats-template">
+    <span id="todo-count">
+      还剩 <%= remaining %> 个任务
+    </span>
+    <ul id="filters">
+      <li><a href="#/" class="selected">全部</a></li>
+      <li><a href="#/active">进行中</a></li>
+      <li><a href="#/completed">已完成</a></li>
+    </ul>
+    <% if (completed )  {%>
+      <button id="clear-completed">清除已完成 (<%= completed %>)</button>  
+    <% } %>
+  </script>
+  
+  <!--<script src="./lib/jquery-2.1.1.min.js"></script>-->
+  <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+  <script src="./lib/underscore-min.js"></script>
+  <script src="./lib/backbone-min.js"></script>
+  <script src="./lib/backbone.localStorage.js"></script>
+  <!-- <script src="./lib/bootstrap.js"></script> -->
+
+  <script src="./js/models/Todo.js"></script>
+  <script src="./js/collections/TodoCollection.js"></script>
+  <script src="./js/views/TodoView.js"></script>
+  <script src="./js/views/AppView.js"></script>
+  <script src="./js/routers/Router.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
